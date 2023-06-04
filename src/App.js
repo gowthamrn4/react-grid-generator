@@ -15,6 +15,7 @@ const Wrapper =  styled.div`
 const Grid = styled.div`
   background: lightgray;
   padding: 10px;
+  cursor: cell
 `
 
 export default function App() {
@@ -31,9 +32,9 @@ export default function App() {
     <br/>
     <h4>Gap : {gap}</h4>
     <input type="range" value={gap}  min="0" max="50" onChange={(e)=>setGap(e.target.value)}/>
-    <Wrapper gap={gap} rows={rows}>
+    <Wrapper gap={gap} rows={rows} onSelect>
       {Array.from(Array(Number(box)).keys()).map((item,key)=>(
-         <Grid key={key}>{item+1}</Grid>
+         <Grid data-id={item} key={key}>{item+1}</Grid>
       ))}
     </Wrapper>
   </Container>;
